@@ -1,4 +1,4 @@
-export type RegionCode = 'PE' | 'MX' | 'AR' | 'CO' | 'CL' | 'ES' | 'GENERAL';
+export type RegionCode = 'PE' | 'MX' | 'AR' | 'CO' | 'CL' | 'VE' | 'ES' | 'GENERAL';
 
 export type Preferences = {
   hasCompletedOnboarding: boolean;

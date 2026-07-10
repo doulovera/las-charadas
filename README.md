@@ -5,7 +5,7 @@ Juego de charadas en español construido con Expo SDK 54. La primera versión es
 ## Qué incluye
 
 - Onboarding que detecta la región configurada en el iPhone y permite cambiarla.
-- Perú, México, Argentina, Colombia, Chile, España y español general.
+- Perú, México, Argentina, Colombia, Chile, Venezuela, España y español general.
 - Cuatro mazos locales con variantes como `canchita`, `palomitas`, `pochoclo`, `crispetas` o `cabritas`.
 - Rondas de 30, 60 o 90 segundos.
 - Juego horizontal con calibración y gestos para correcto/pasar.

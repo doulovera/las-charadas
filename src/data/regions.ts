@@ -13,6 +13,7 @@ export const REGIONS: Array<{
   { code: 'AR', name: 'Argentina', flag: '🇦🇷', confirmation: 'usar Argentina' },
   { code: 'CO', name: 'Colombia', flag: '🇨🇴', confirmation: 'usar Colombia' },
   { code: 'CL', name: 'Chile', flag: '🇨🇱', confirmation: 'usar Chile' },
+  { code: 'VE', name: 'Venezuela', flag: '🇻🇪', confirmation: 'usar Venezuela' },
   { code: 'ES', name: 'España', flag: '🇪🇸', confirmation: 'usar España' },
   { code: 'GENERAL', name: 'Español general', flag: '🌎', confirmation: 'usar español general' },
 ];
