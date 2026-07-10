@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Plan inicial — Las Charadas</title>
+    <style>
+      :root {
+        --ink: #20201e;
+        --muted: #66645f;
+        --paper: #f7f3e9;
+        --card: #fffdf7;
+        --line: #d9d1c2;
+        --accent: #ef5b3f;
+        --accent-soft: #fee6df;
+        --green: #2f7d5b;
+        --green-soft: #e0f1e8;
+        --yellow: #f0bd3d;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 8% 4%, #f9d79a 0, transparent 22rem),
+          var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      main {
+        width: min(920px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 64px 0 96px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+      h1, h2, h3 { line-height: 1.15; }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 20px;
+        font-size: clamp(2.8rem, 8vw, 5.6rem);
+        letter-spacing: -0.065em;
+      }
+
+      h2 {
+        margin-bottom: 24px;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        letter-spacing: -0.035em;
+      }
+
+      h3 { margin-bottom: 10px; font-size: 1.08rem; }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 18px;
+        padding: 6px 11px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .intro {
+        max-width: 680px;
+        margin-bottom: 30px;
+        color: var(--muted);
+        font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+      }
+
+      .thesis {
+        padding: 18px 22px;
+        border-left: 6px solid var(--accent);
+        background: var(--card);
+        font-size: 1.1rem;
+        font-weight: 650;
+      }
+
+      section { margin-top: 72px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--card) 94%, transparent);
+        box-shadow: 0 8px 24px rgb(53 44 27 / 5%);
+      }
+
+      .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+      .card p { color: var(--muted); }
+
+      .number {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 20px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: white;
+        font-weight: 800;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        list-style: none;
+        padding: 0;
+      }
+
+      .flow li {
+        position: relative;
+        min-height: 128px;
+        padding: 20px;
+        border-radius: 16px;
+        background: var(--ink);
+        color: white;
+      }
+
+      .flow strong { display: block; margin-bottom: 8px; color: var(--yellow); }
+
+      .decision {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+
+      .decision > div { padding: 28px; }
+      .decision .now { background: var(--green-soft); }
+      .decision .later { background: var(--card); }
+
+      ul { padding-left: 1.2rem; }
+      li + li { margin-top: 7px; }
+
+      code {
+        padding: 2px 6px;
+        border-radius: 5px;
+        background: #ebe5d9;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.88em;
+      }
+
+      pre {
+        overflow-x: auto;
+        margin: 0;
+        padding: 24px;
+        border-radius: 16px;
+        background: #242320;
+        color: #f8f0dc;
+        font-size: 0.88rem;
+        line-height: 1.7;
+      }
+
+      .tag {
+        display: inline-block;
+        margin: 3px 4px 3px 0;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #8d2d1d;
+        font-size: 0.82rem;
+        font-weight: 750;
+      }
+
+      .callout {
+        padding: 28px;
+        border-radius: 20px;
+        background: var(--accent);
+        color: white;
+      }
+
+      .callout h2 { margin-bottom: 12px; }
+      .callout p { max-width: 700px; margin-bottom: 0; font-size: 1.08rem; }
+
+      .checklist { list-style: none; padding: 0; }
+      .checklist li { position: relative; padding-left: 30px; }
+      .checklist li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.35em;
+        width: 14px;
+        height: 14px;
+        border: 2px solid var(--green);
+        border-radius: 4px;
+      }
+
+      footer {
+        margin-top: 72px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 720px) {
+        main { padding-top: 36px; }
+        .grid, .decision { grid-template-columns: 1fr; }
+        .flow { grid-template-columns: 1fr 1fr; }
+        section { margin-top: 52px; }
+      }
+
+      @media (max-width: 440px) {
+        .flow { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="eyebrow">Plan inicial · MVP</span>
+        <h1>Las Charadas</h1>
+        <p class="intro">
+          Un juego de charadas en español que adapta sus palabras y referencias al país de cada persona.
+          Se construirá con Expo, empezando por iOS y manteniendo el camino abierto para Android y web.
+        </p>
+        <p class="thesis">La propuesta: una app de charadas que realmente habla tu español.</p>
+      </header>
+
+      <section>
+        <h2>La idea del producto</h2>
+        <div class="grid">
+          <article class="card">
+            <span class="number">1</span>
+            <h3>Español regional</h3>
+            <p>
+              La interfaz estará en español, pero las tarjetas usarán vocabulario familiar para cada región.
+              Por ejemplo: canchita, palomitas, pochoclo, crispetas o cabritas.
+            </p>
+          </article>
+          <article class="card">
+            <span class="number">2</span>
+            <h3>Juego social y presencial</h3>
+            <p>
+              El teléfono se comparte entre parejas o grupos. La persona que adivina lo coloca en su frente,
+              mientras el resto describe o actúa la palabra visible.
+            </p>
+          </article>
+          <article class="card">
+            <span class="number">3</span>
+            <h3>Sin cuentas para empezar</h3>
+            <p>
+              La primera versión será local, rápida y jugable sin registro, conexión a internet ni configuración compleja.
+            </p>
+          </article>
+          <article class="card">
+            <span class="number">4</span>
+            <h3>Una base multiplataforma</h3>
+            <p>
+              Expo y React Native permitirán compartir la mayor parte del código entre iOS, Android y web,
+              con controles específicos cuando la plataforma lo necesite.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Onboarding regional</h2>
+        <ol class="flow">
+          <li><strong>01 · Detectar</strong>Leer la región configurada en el dispositivo, sin pedir ubicación.</li>
+          <li><strong>02 · Confirmar</strong>“Parece que estás en Perú”. La persona puede aceptar o cambiar el país.</li>
+          <li><strong>03 · Explicar</strong>Indicar que se usarán palabras y referencias más familiares para esa región.</li>
+          <li><strong>04 · Guardar</strong>Conservar la preferencia localmente y permitir cambiarla desde Ajustes.</li>
+        </ol>
+        <p>
+          Regiones iniciales:
+          <span class="tag">Perú</span>
+          <span class="tag">México</span>
+          <span class="tag">Argentina</span>
+          <span class="tag">Colombia</span>
+          <span class="tag">Chile</span>
+          <span class="tag">España</span>
+          <span class="tag">Español general</span>
+        </p>
+        <p>
+          La selección mediante imágenes puede convertirse después en una personalización opcional,
+          pero no debe retrasar el primer juego.
+        </p>
+      </section>
+
+      <section>
+        <h2>Una ronda</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Preparación</h3>
+            <ul>
+              <li>Elegir un mazo y configurar la ronda.</li>
+              <li>Mostrar un tutorial breve de movimientos.</li>
+              <li>Girar el teléfono horizontalmente.</li>
+              <li>Calibrar la posición neutral antes de comenzar.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Controles físicos</h3>
+            <ul>
+              <li><strong>Inclinar hacia abajo:</strong> correcto, con respuesta verde.</li>
+              <li><strong>Inclinar hacia arriba:</strong> pasar, con respuesta roja o ámbar.</li>
+              <li>Volver a la posición neutral para mostrar la siguiente tarjeta.</li>
+              <li>Confirmar cada acción con color, sonido y vibración.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Accesibilidad y seguridad</h3>
+            <ul>
+              <li>Botones grandes de “Correcto” y “Pasar” como alternativa.</li>
+              <li>Evitar que un solo movimiento avance varias tarjetas.</li>
+              <li>Permitir desactivar sonidos y vibraciones.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Final de ronda</h3>
+            <ul>
+              <li>Mostrar respuestas correctas, pasadas y puntaje total.</li>
+              <li>Permitir revisar las tarjetas de la ronda.</li>
+              <li>Continuar con otra persona o equipo.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Modelo de contenido</h2>
+        <p>
+          No se crearán mazos completos duplicados por país. Un mismo concepto tendrá variantes regionales;
+          las referencias locales sí podrán limitarse a países concretos.
+        </p>
+        <pre><code>{
+  "id": "popcorn",
+  "category": "comida",
+  "defaultTerm": "palomitas",
+  "terms": {
+    "PE": "canchita",
+    "MX": "palomitas",
+    "AR": "pochoclo",
+    "CO": "crispetas",
+    "CL": "cabritas",
+    "ES": "palomitas"
+  }
+}</code></pre>
+        <div class="grid" style="margin-top: 16px">
+          <article class="card">
+            <h3>Variantes del mismo concepto</h3>
+            <p>Comidas, objetos, expresiones y acciones cuyo nombre cambia entre regiones.</p>
+          </article>
+          <article class="card">
+            <h3>Referencias regionales</h3>
+            <p>Celebridades, programas, deportes o personajes que solo son familiares en determinados países.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Alcance técnico</h2>
+        <div class="decision">
+          <div class="now">
+            <h3>Ahora: sin servidor</h3>
+            <ul>
+              <li>Contenido incluido en la aplicación.</li>
+              <li>Preferencias y región guardadas localmente.</li>
+              <li>Temporizador, equipos, puntaje e historial local.</li>
+              <li>Juego completamente offline.</li>
+              <li>Sin cuentas ni sincronización.</li>
+            </ul>
+          </div>
+          <div class="later">
+            <h3>Después, solo si aporta valor</h3>
+            <ul>
+              <li>Actualización remota de mazos mediante archivos versionados.</li>
+              <li>Reportes de palabras incorrectas o desactualizadas.</li>
+              <li>Analítica anónima y gestión de contenido.</li>
+              <li>Compras, sincronización o mazos comunitarios.</li>
+              <li>Juego en línea como modo separado.</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top: 18px">
+          Si se necesitan actualizaciones frecuentes, el primer paso sería un manifiesto estático en un CDN,
+          no una API completa. La app siempre debe seguir funcionando offline.
+        </p>
+      </section>
+
+      <section>
+        <h2>iOS, Android y web</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Código compartido</h3>
+            <p>
+              Onboarding, mazos, contenido regional, temporizador, puntaje, equipos, resultados,
+              ajustes y la mayoría de los componentes visuales.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Diferencias por plataforma</h3>
+            <p>
+              iOS y Android usarán sensores del teléfono. En web, el movimiento dependerá del navegador y
+              sus permisos; siempre habrá botones y controles de teclado como alternativa.
+            </p>
+          </article>
+        </div>
+        <p>
+          Orden propuesto: validar primero la experiencia física en <strong>iOS</strong>, continuar con
+          <strong>Android</strong> y después publicar una versión <strong>web</strong> adaptable.
+        </p>
+      </section>
+
+      <section>
+        <h2>MVP propuesto</h2>
+        <ul class="checklist">
+          <li>Proyecto Expo preparado para compartir lógica entre plataformas.</li>
+          <li>Interfaz completamente en español.</li>
+          <li>Detección, confirmación y cambio manual de región.</li>
+          <li>Seis regiones iniciales más español general.</li>
+          <li>Un conjunto pequeño de mazos bien revisados.</li>
+          <li>Juego por turnos para parejas, grupos y equipos.</li>
+          <li>Rondas con temporizador y gestos de correcto/pasar.</li>
+          <li>Retroalimentación visual, sonora y háptica.</li>
+          <li>Controles táctiles alternativos.</li>
+          <li>Resumen de resultados al terminar cada ronda.</li>
+          <li>Persistencia local y funcionamiento offline.</li>
+        </ul>
+      </section>
+
+      <section class="callout">
+        <h2>Principio para empezar a construir</h2>
+        <p>
+          Crear primero una experiencia pequeña que sea divertida al pasar el teléfono entre personas.
+          La regionalización debe mejorar esa experiencia sin convertir el onboarding en un cuestionario.
+        </p>
+      </section>
+
+      <footer>
+        Documento de planificación inicial para Las Charadas · Preparado para continuar la implementación en otra tarea.
+      </footer>
+    </main>
+  </body>
+</html>

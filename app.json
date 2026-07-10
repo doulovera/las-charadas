@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Las Charadas",
+    "slug": "las-charadas",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.doulovera.lascharadas",
+      "requireFullScreen": true,
+      "infoPlist": {
+        "NSMotionUsageDescription": "Las Charadas usa el movimiento del iPhone para marcar respuestas correctas o pasar tarjetas.",
+        "UISupportedInterfaceOrientations": [
+          "UIInterfaceOrientationPortrait",
+          "UIInterfaceOrientationLandscapeLeft",
+          "UIInterfaceOrientationLandscapeRight"
+        ]
+      }
+    },
+    "plugins": [
+      "expo-localization",
+      "expo-screen-orientation",
+      "expo-audio",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#F7F1E5"
+        }
+      ],
+      "expo-font",
+      "expo-asset"
+    ]
+  }
+}
